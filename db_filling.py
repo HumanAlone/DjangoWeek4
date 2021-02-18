@@ -6,7 +6,7 @@ def filling_db():
     for specialty in specialties:
         Specialty.objects.create(
             code=specialty['code'],
-            title=specialty['title']
+            title=specialty['title'],
         )
 
     for company in companies:

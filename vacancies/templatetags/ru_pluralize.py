@@ -4,15 +4,14 @@ register = template.Library()
 
 
 @register.filter
-def ru_pluralize(value, arg="дурак,дурака,дураков"):
+def ru_pluralize(value_number, arg="дурак,дурака,дураков"):
     args = arg.split(",")
-    number = abs(int(value))
-    a = number % 10
-    b = number % 100
+    number = abs(int(value_number))
+    modulo_a = number % 10
+    modulo_b = number % 100
 
-    if (a == 1) and (b != 11):
+    if modulo_a == 1 and modulo_b != 11:
         return args[0]
-    elif (a >= 2) and (a <= 4) and ((b < 10) or (b >= 20)):
+    elif 2 <= modulo_a <= 4 and (modulo_b < 10 or modulo_b >= 20):
         return args[1]
-    else:
-        return args[2]
+    return args[2]

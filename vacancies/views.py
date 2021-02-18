@@ -23,7 +23,7 @@ def company_view(request, pk):
     vacancies = Vacancy.objects.filter(company_id=pk)
     context = {
         "company": company,
-        "vacancies": vacancies
+        "vacancies": vacancies,
     }
     return render(request, "vacancies/company.html", context=context)
 
@@ -35,7 +35,7 @@ def specialty_vacancies_view(request, cat):
         raise Http404
     context = {
         "specialty_vacancies": specialty_vacancies,
-        "cat": cat
+        "cat": cat,
     }
     return render(request, "vacancies/specialty-vacancies.html", context=context)
 
@@ -51,7 +51,7 @@ def vacancy_view(request, pk):
     except Vacancy.DoesNotExist:
         raise Http404
     context = {
-        "vacancy": vacancy
+        "vacancy": vacancy,
     }
     return render(request, "vacancies/vacancy.html", context=context)
 
